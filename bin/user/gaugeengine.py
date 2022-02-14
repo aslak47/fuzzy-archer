@@ -130,7 +130,7 @@ class GaugeGenerator(weewx.reportengine.ReportGenerator):
         if self.debug == 0:
             syslog.setlogmask(syslog.LOG_INFO)
         else:
-            syslog.setlogmask(syslog.DEBUG_INFO)
+            syslog.setlogmask(syslog.LOG_DEBUG)
 
         # Create a converter to get this into the desired units
         self.converter = weewx.units.Converter(self.units_dict['Groups'])
