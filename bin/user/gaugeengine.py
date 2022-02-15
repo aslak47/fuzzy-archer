@@ -125,12 +125,6 @@ class GaugeGenerator(weewx.reportengine.ReportGenerator):
 
         self.gauge_dict = self.skin_dict['GaugeGenerator']
         self.units_dict = self.skin_dict['Units']
-        # syslog.setlogmask(syslog.LOG_INFO)
-        self.debug = int(self.skin_dict.get('debug', 0))
-        if self.debug == 0:
-            syslog.setlogmask(syslog.LOG_INFO)
-        else:
-            syslog.setlogmask(syslog.LOG_DEBUG)
 
         # Create a converter to get this into the desired units
         self.converter = weewx.units.Converter(self.units_dict['Groups'])

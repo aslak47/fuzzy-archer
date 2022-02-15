@@ -51,7 +51,6 @@ class ImageGeneratorTranslated(ImageGenerator):
 
         ImageGenerator.setup(self)
 
-
 class CheetahGeneratorTranslated(CheetahGenerator):
     """Overwrite skin.conf dictionary with language specific entries"""
 
@@ -90,6 +89,12 @@ def _get_language_dict(skin_dict, config_dict):
                               os.path.basename(__file__), language_config_path)
 
                 language_dict = None
+
+    syslog.setlogmask(syslog.LOG_INFO)
+    if 'debug' in config_dict:
+        debug = int(config_dict.get('debug', 0))
+        if debug != 0:
+            syslog.setlogmask(syslog.LOG_DEBUG)
 
     if language_dict is None:
         syslog.syslog(syslog.LOG_DEBUG, "%s: No language override specified." % (os.path.basename(__file__)))
