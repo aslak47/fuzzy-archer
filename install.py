@@ -66,10 +66,10 @@ class BootstrapInstaller(setup.ExtensionInstaller):
                 'StdReport': {
                     'SmallImages': {
                         'skin':'Images',
-                        'HTML_ROOT':'Bootstrap/images'},
+                        'HTML_ROOT':'bootstrap/images'},
                     'BigImages': {
                         'skin':'Images',
-                        'HTML_ROOT':'Bootstrap/big_images',
+                        'HTML_ROOT':'bootstrap/big_images',
                         'ImageGenerator' : {
                             'image_width'            : '900',
                             'image_height'           : '600',
@@ -80,7 +80,7 @@ class BootstrapInstaller(setup.ExtensionInstaller):
                             'axis_label_font_size'   : '14'}},
                     'HTMLPages': {
                         'skin':'Bootstrap',
-                        'HTML_ROOT':'Bootstrap'}}},
+                        'HTML_ROOT':'bootstrap'}}},
             files=files)
 
         print("")
