@@ -104,12 +104,6 @@ def _get_language_dict(skin_dict, config_dict):
 
                 language_dict = None
 
-    syslog.setlogmask(syslog.LOG_UPTO(syslog.LOG_INFO))
-    if 'debug' in config_dict:
-        debug = int(config_dict.get('debug', 0))
-        if debug != 0:
-            syslog.setlogmask(syslog.LOG_UPTO(syslog.LOG_DEBUG))
-
     if language_dict is None:
         log.debug("%s: No language override specified." % (os.path.basename(__file__)))
 
