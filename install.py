@@ -33,7 +33,6 @@ class BootstrapInstaller(setup.ExtensionInstaller):
              'skins/Bootstrap/stats.html.tmpl',
              'skins/Bootstrap/week.html.tmpl',
              'skins/Bootstrap/year.html.tmpl',
-             'skins/Bootstrap/gauges.html.tmpl',
              'skins/Bootstrap/almanac.html.tmpl',
              'skins/Bootstrap/skin.conf']),
            ('skins/Bootstrap/NOAA',
@@ -114,6 +113,6 @@ class BootstrapInstaller(setup.ExtensionInstaller):
         print("   Images:       skins/Images/skin.conf")
 
         print("")
-        print("Default location for HTML and image files is public_html/Bootstrap")
-        print("*** POINT YOUR BROWSER TO: public_html/Bootstrap/index.html ***")
+        print("Default location for HTML and image files is public_html/bootstrap")
+        print("*** POINT YOUR BROWSER TO: public_html/bootstrap/index.html ***")
         print("")
