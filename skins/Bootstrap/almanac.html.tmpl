@@ -23,7 +23,7 @@
             <div class="row col-xs-12" align="center">
               <table class="table table-bordered">
                 <tbody>
-                  <th><h2>$BootstrapLabels.almanac.almanac</h2></th>
+                  <th colspan="2"><h2>$BootstrapLabels.almanac.almanac</h2></th>
                   #if $almanac.hasExtras
                   ## Extended almanac information is available. Do the full set of tables.
                   #set $sun_altitude = $almanac.sun.alt
@@ -37,7 +37,7 @@
                     <div class="row col-xs-12" align="center">
                     <table class="table table-hover">
                     <tbody>
-                     <th> <h3>$BootstrapLabels.almanac.sun</h3></th>
+                     <th colspan="2"><h3>$BootstrapLabels.almanac.sun</h3></th>
                       <tr>
                         <td>$BootstrapLabels.almanac.start_civil_twilight</td>
                         <td>$almanac(horizon=-6).sun(use_center=1).rise</td>
@@ -102,10 +102,10 @@
 
 
                   <td>
-                   <div class="row col-xs-12" align="center">
+                    <div class="row col-xs-12" align="center">
                     <table class="table table-hover">
-                <tbody>
-                     <th><h3>$BootstrapLabels.almanac.moon</h3> </th>
+                    <tbody>
+                     <th colspan="2"><h3>$BootstrapLabels.almanac.moon</h3></th>
                       <tr>
                         <td>$BootstrapLabels.almanac.rise</td>
                         <td>$almanac.moon.rise</td>
