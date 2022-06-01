@@ -20,11 +20,11 @@
         <div class="col-md-9 main">
             <p></p>
             #include "graphMenu.html.tmpl"
-            <div class="row col-xs-12" align="center">
-              <table class="table table-bordered">
+            <div class="row">
+              <table class="table">
                 <tbody>
-                  <th><h3>$BootstrapLabels.almanac.sun</h3></th>
-                  <th><h3>$BootstrapLabels.almanac.moon</h3></th>
+                  <th scope="col"><h3>$BootstrapLabels.almanac.sun</h3></th>
+                  <th scope="col"><h3>$BootstrapLabels.almanac.moon</h3></th>
                   #if $almanac.hasExtras
                   ## Extended almanac information is available. Do the full set of tables.
                   #set $sun_altitude = $almanac.sun.alt
@@ -35,66 +35,70 @@
                   #end if
                   <tr>
                   <td>
-                    <div class="row col-xs-12" align="center">
+                    <div class="row col">
                     <table class="table table-hover">
                     <tbody>
                       <tr>
-                        <td>$BootstrapLabels.almanac.start_civil_twilight</td>
+                        <th scope="row">$BootstrapLabels.almanac.start_civil_twilight</td>
                         <td>$almanac(horizon=-6).sun(use_center=1).rise</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.sunrise</td>
+                        <th scope="row">$BootstrapLabels.almanac.sunrise</td>
                         <td>$almanac.sun.rise.string($sun_None)</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.transit</td>
+                        <th scope="row">$BootstrapLabels.almanac.transit</td>
                         <td>$almanac.sun.transit</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.sunset</td>
+                        <th scope="row">$BootstrapLabels.almanac.sunset</td>
                         <td>$almanac.sun.set.string($sun_None)</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.end_civil_twilight</td>
+                        <th scope="row">$BootstrapLabels.almanac.end_civil_twilight</td>
                         <td>$almanac(horizon=-6).sun(use_center=1).set</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.azimuth</td>
+                        <th scope="row">$BootstrapLabels.almanac.azimuth</td>
                         <td>$("%.1f&deg;" % $almanac.sun.az)</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.altitude</td>
+                        <th scope="row">$BootstrapLabels.almanac.altitude</td>
                         <td>$("%.1f&deg;" % $sun_altitude)</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.right_ascension</td>
+                        <th scope="row">$BootstrapLabels.almanac.right_ascension</td>
                         <td>$("%.1f&deg;" % $almanac.sun.ra)</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.declination</td>
+                        <th scope="row">$BootstrapLabels.almanac.declination</td>
                         <td>$("%.1f&deg;" % $almanac.sun.dec)</td>
                       </tr>
                       #if $almanac.next_equinox.raw < $almanac.next_solstice.raw
                       ## The equinox is before the solstice. Display them in order.
                       <tr>
-                        <td>$BootstrapLabels.almanac.equinox</td>
+                        <th scope="row">$BootstrapLabels.almanac.equinox</td>
                         <td>$almanac.next_equinox</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.solstice</td>
+                        <th scope="row">$BootstrapLabels.almanac.solstice</td>
                         <td>$almanac.next_solstice</td>
                       </tr>
                       #else
                       ## The solstice is before the equinox. Display them in order.
                       <tr>
-                        <td>$BootstrapLabels.almanac.solstice</td>
+                        <th scope="row">$BootstrapLabels.almanac.solstice</td>
                         <td>$almanac.next_solstice</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.equinox</td>
+                        <th scope="row">$BootstrapLabels.almanac.equinox</td>
                         <td>$almanac.next_equinox</td>
                       </tr>
                       #end if
+                      <tr>
+                        <th scope="row">&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
                     </tbody>
                     </table>
                     </div>
@@ -102,58 +106,66 @@
 
 
                   <td>
-                    <div class="row col-xs-12" align="center">
+                    <div class="row col">
                     <table class="table table-hover">
                     <tbody>
                       <tr>
-                        <td>$BootstrapLabels.almanac.rise</td>
+                        <th scope="row">&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">$BootstrapLabels.almanac.rise</td>
                         <td>$almanac.moon.rise</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.transit</td>
+                        <th scope="row">$BootstrapLabels.almanac.transit</td>
                         <td>$almanac.moon.transit</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.set</td>
+                        <th scope="row">$BootstrapLabels.almanac.set</td>
                         <td>$almanac.moon.set</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.azimuth</td>
+                        <th scope="row">&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">$BootstrapLabels.almanac.azimuth</td>
                         <td>$("%.1f&deg;" % $almanac.moon.az)</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.altitude</td>
+                        <th scope="row">$BootstrapLabels.almanac.altitude</td>
                         <td>$("%.1f&deg;" % $almanac.moon.alt)</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.right_ascension</td>
+                        <th scope="row">$BootstrapLabels.almanac.right_ascension</td>
                         <td>$("%.1f&deg;" % $almanac.moon.ra)</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.declination</td>
+                        <th scope="row">$BootstrapLabels.almanac.declination</td>
                         <td>$("%.1f&deg;" % $almanac.moon.dec)</td>
                       </tr>
                     #if $almanac.next_full_moon.raw < $almanac.next_new_moon.raw
                       <tr>
-                        <td>$BootstrapLabels.almanac.full_moon</td>
+                        <th scope="row">$BootstrapLabels.almanac.full_moon</td>
                         <td>$almanac.next_full_moon</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.new_moon</td>
+                        <th scope="row">$BootstrapLabels.almanac.new_moon</td>
                         <td>$almanac.next_new_moon</td>
                       </tr>
                     #else
                       <tr>
-                        <td>$BootstrapLabels.almanac.new_moon</td>
+                        <th scope="row">$BootstrapLabels.almanac.new_moon</td>
                         <td>$almanac.next_new_moon</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.full_moon</td>
+                        <th scope="row">$BootstrapLabels.almanac.full_moon</td>
                         <td>$almanac.next_full_moon</td>
                       </tr>
                     #end if
                       <tr>
-                        <td>$BootstrapLabels.almanac.phase</td>
+                        <th scope="row">$BootstrapLabels.almanac.phase</td>
                         <td>$almanac.moon_phase ($almanac.moon_fullness% full)</td>
                       </tr>
                 </tbody>
@@ -163,22 +175,22 @@
                   #else
                   ## No extended almanac information available. Fall back to a simple table.
                     <div class="col-md-12">
-                     <div class="row col-xs-11" align="center">
+                     <div class="row col">
                     <table class="table table-hover">
-                <tbody>
+                     <tbody>
                       <tr>
-                        <td>$BootstrapLabels.almanac.sunrise</td>
+                        <th scope="row">$BootstrapLabels.almanac.sunrise</td>
                         <td>$almanac.sunrise</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.sunset</td>
+                        <th scope="row">$BootstrapLabels.almanac.sunset</td>
                         <td>$almanac.sunset</td>
                       </tr>
                       <tr>
-                        <td>$BootstrapLabels.almanac.moon_phase</td>
+                        <th scope="row">$BootstrapLabels.almanac.moon_phase</td>
                         <td>$almanac.moon_phase ($almanac.moon_fullness% full)</td>
                       </tr>
-                </tbody>
+                     </tbody>
                     </table>
                     </div>
                     </div>
