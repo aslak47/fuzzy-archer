@@ -73,7 +73,7 @@ function loadGauges() {
                 if (value === 0)
                     return 'N';
                 if (value === 90)
-                    return 'E';
+                    return 'Ø';
                 if (value === 180)
                     return 'S';
                 if (value === 270)
