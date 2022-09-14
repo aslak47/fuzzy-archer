@@ -73,11 +73,11 @@ function loadGauges() {
                 if (value === 0)
                     return 'N';
                 if (value === 90)
-                    return 'O';
+                    return 'E';
                 if (value === 180)
                     return 'S';
                 if (value === 270)
-                    return 'W';
+                    return 'V';
             };
             gaugeOption.series[0].title.offsetCenter = ['0', '-25%'];
             gaugeOption.series[0].detail.offsetCenter = ['0', '30%'];
