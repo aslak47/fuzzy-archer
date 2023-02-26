@@ -4,6 +4,7 @@
     <a class="btn" href="week.html#">$gettext("Week")</a>
     <a class="btn" href="month.html#">$gettext("Month")</a>
     <a class="btn" href="year.html#">$gettext("Year")</a>
+    <a class="btn" href="almanac.html#">$gettext("Almanac")</a>
 </p>
 <script type="text/javascript">
 ## 'raw' makes Cheetah skip this section so it doesn't get confused by the dollar characters in the js
@@ -47,4 +48,8 @@
           item = listItems.iterateNext();
         }
 #end raw
+<<<<<<< Updated upstream:skins/Bootstrap/graphMenu.html.inc
 </script>
+=======
+</script>
+>>>>>>> Stashed changes:skins/Bootstrap/script.html.tmpl

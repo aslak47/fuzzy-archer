@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>$BootstrapLabels.title</title>
-   <!-- Bootstrap -->
-   <link href="css/bootstrap.min.css" rel="stylesheet" />
-   <link href="css/live.css" rel="stylesheet">
-</head>
+<html lang="$lang">
+#include "head.html.inc"
 <!-- Menu navbar -->
 <body>
-#include "nav.html.tmpl"
+#include "nav.html.inc"
 <!-- Main container -->
 <div class="container-fluid">
     <div class="row">
         <!-- Gauge panel -->
-        #include "livegauges.html.tmpl"
+        #include "livegauges.html.inc"
         <!-- Graph panel -->
         <div class="col-md-9 main">
             <p></p>
-            #include "graphMenu.html.tmpl"
+            #include "graphMenu.html.inc"
             <table class="table">
               <tbody>
-                <th scope="col"><h3>$BootstrapLabels.Almanac.sun</h3></th>
-                <th scope="col"><h3>$BootstrapLabels.Almanac.moon</h3></th>
+                <th scope="col"><h3>$gettext("Sun")</h3></th>
+                <th scope="col"><h3>$gettext("Moon")</h3></th>
                 #if $almanac.hasExtras
                 ## Extended almanac information is available. Do the full set of tables.
                 #set $sun_altitude = $almanac.sun.alt
@@ -216,7 +209,7 @@
 <script src="js/lang.js"></script>
 <script src="js/gauges.js"></script>
 <script src="js/charts.js"></script>
-#include "script.html.tmpl"
+#include "script.html.inc"
 </body>
 </html>
 
