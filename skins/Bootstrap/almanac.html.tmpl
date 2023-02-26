@@ -38,59 +38,59 @@
                 <table class="table table-hover">
                 <tbody>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.start_civil_twilight</td>
+                    <th scope="row">$gettext("Start_civil_twilight")</td>
                     <td>$almanac(horizon=-6).sun(use_center=1).rise</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.sunrise</td>
+                    <th scope="row">$gettext("Sunrise")</td>
                     <td>$almanac.sun.rise.string($sun_None)</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.transit</td>
+                    <th scope="row">$gettext("Transit")</td>
                     <td>$almanac.sun.transit</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.sunset</td>
+                    <th scope="row">$gettext("Sunset")</td>
                     <td>$almanac.sun.set.string($sun_None)</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.end_civil_twilight</td>
+                    <th scope="row">$gettext("End_civil_twilight")</td>
                     <td>$almanac(horizon=-6).sun(use_center=1).set</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.azimuth</td>
+                    <th scope="row">$gettext("Azimuth")</td>
                     <td>$("%.1f&deg;" % $almanac.sun.az)</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.altitude</td>
+                    <th scope="row">$gettext("Altitude")</td>
                     <td>$("%.1f&deg;" % $sun_altitude)</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.right_ascension</td>
+                    <th scope="row">$gettext("Right_ascension")</td>
                     <td>$("%.1f&deg;" % $almanac.sun.ra)</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.declination</td>
+                    <th scope="row">$gettext("Declination")</td>
                     <td>$("%.1f&deg;" % $almanac.sun.dec)</td>
                   </tr>
                   #if $almanac.next_equinox.raw < $almanac.next_solstice.raw
                   ## The equinox is before the solstice. Display them in order.
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.equinox</td>
+                    <th scope="row">$gettext("Equinox")</td>
                     <td>$almanac.next_equinox</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.solstice</td>
+                    <th scope="row">$gettext("Solstice")</td>
                     <td>$almanac.next_solstice</td>
                   </tr>
                   #else
                   ## The solstice is before the equinox. Display them in order.
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.solstice</td>
+                    <th scope="row">$gettext("Solstice")</td>
                     <td>$almanac.next_solstice</td>
                   </tr>
                   <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.equinox</td>
+                    <th scope="row">$gettext("Equinox")</td>
                 <td>$almanac.next_equinox</td>
                   </tr>
                   #end if
@@ -111,15 +111,15 @@
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.rise</td>
+                      <th scope="row">$gettext("Rise")</td>
                       <td>$almanac.moon.rise</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.transit</td>
+                      <th scope="row">$gettext("Transit")</td>
                       <td>$almanac.moon.transit</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.set</td>
+                      <th scope="row">$gettext("Set")</td>
                       <td>$almanac.moon.set</td>
                     </tr>
                     <tr>
@@ -127,42 +127,42 @@
                       <td>&nbsp;</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.azimuth</td>
+                      <th scope="row">$gettext("Azimuth")</td>
                       <td>$("%.1f&deg;" % $almanac.moon.az)</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.altitude</td>
+                      <th scope="row">$gettext("Altitude")</td>
                       <td>$("%.1f&deg;" % $almanac.moon.alt)</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.right_ascension</td>
+                      <th scope="row">$gettext("Right_ascension")</td>
                       <td>$("%.1f&deg;" % $almanac.moon.ra)</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.declination</td>
+                      <th scope="row">$gettext("Declination")</td>
                       <td>$("%.1f&deg;" % $almanac.moon.dec)</td>
                     </tr>
                   #if $almanac.next_full_moon.raw < $almanac.next_new_moon.raw
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.full_moon</td>
+                      <th scope="row">$gettext("Full_moon")</td>
                       <td>$almanac.next_full_moon</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.new_moon</td>
+                      <th scope="row">$gettext("New_moon")</td>
                       <td>$almanac.next_new_moon</td>
                     </tr>
                   #else
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.new_moon</td>
+                      <th scope="row">$gettext("New_moon")</td>
                       <td>$almanac.next_new_moon</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.full_moon</td>
+                      <th scope="row">$gettext("Full_moon")</td>
                       <td>$almanac.next_full_moon</td>
                     </tr>
                   #end if
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.phase</td>
+                      <th scope="row">$gettext("Phase")</td>
                       <td>$almanac.moon_phase ($almanac.moon_fullness% full)</td>
                     </tr>
                 </tbody>
@@ -176,15 +176,15 @@
                   <table class="table table-hover">
                    <tbody>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.sunrise</td>
+                      <th scope="row">$gettext("Sunrise")</td>
                       <td>$almanac.sunrise</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.sunset</td>
+                      <th scope="row">$gettext("Sunset")</td>
                       <td>$almanac.sunset</td>
                     </tr>
                     <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.moon_phase</td>
+                      <th scope="row">$gettext("Moon_phase")</td>
                       <td>$almanac.moon_phase ($almanac.moon_fullness% full)</td>
                     </tr>
                    </tbody>
@@ -202,7 +202,7 @@
 
     <hr>
     <footer>
-      <p>$BootstrapLabels.footer</p>
+      <p>$gettext("Footer text")</p>
     </footer>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
