@@ -48,8 +48,4 @@
           item = listItems.iterateNext();
         }
 #end raw
-<<<<<<< Updated upstream:skins/Bootstrap/graphMenu.html.inc
 </script>
-=======
-</script>
->>>>>>> Stashed changes:skins/Bootstrap/script.html.tmpl
