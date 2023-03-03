@@ -1,222 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>$BootstrapLabels.title</title>
-   <!-- Bootstrap -->
-   <link href="css/bootstrap.min.css" rel="stylesheet" />
-   <link href="css/live.css" rel="stylesheet">
-</head>
+<html lang="$lang">
+#include "head.html.inc"
 <!-- Menu navbar -->
 <body>
-#include "nav.html.tmpl"
+#include "nav.html.inc"
 <!-- Main container -->
 <div class="container-fluid">
     <div class="row">
         <!-- Gauge panel -->
-        #include "livegauges.html.tmpl"
-        <!-- Graph panel -->
+        #include "livegauges.html.inc"
+        <!-- Almanac panel -->
         <div class="col-md-9 main">
             <p></p>
-            #include "graphMenu.html.tmpl"
+            #include "graphMenu.html.inc"
             <table class="table">
-              <tbody>
-                <th scope="col"><h3>$BootstrapLabels.Almanac.sun</h3></th>
-                <th scope="col"><h3>$BootstrapLabels.Almanac.moon</h3></th>
-                #if $almanac.hasExtras
-                ## Extended almanac information is available. Do the full set of tables.
-                #set $sun_altitude = $almanac.sun.alt
-                #if $sun_altitude < 0
-                #set $sun_None="<i>(Always down)</i>"
-                #else
-                #set $sun_None="<i>(Always up)</i>"
-                #end if
-                <tr>
-                  <td>
-                <div class="row col">
-                <table class="table table-hover">
                 <tbody>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.start_civil_twilight</td>
-                    <td>$almanac(horizon=-6).sun(use_center=1).rise</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.sunrise</td>
-                    <td>$almanac.sun.rise.string($sun_None)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.transit</td>
-                    <td>$almanac.sun.transit</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.sunset</td>
-                    <td>$almanac.sun.set.string($sun_None)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.end_civil_twilight</td>
-                    <td>$almanac(horizon=-6).sun(use_center=1).set</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.azimuth</td>
-                    <td>$("%.1f&deg;" % $almanac.sun.az)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.altitude</td>
-                    <td>$("%.1f&deg;" % $sun_altitude)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.right_ascension</td>
-                    <td>$("%.1f&deg;" % $almanac.sun.ra)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.declination</td>
-                    <td>$("%.1f&deg;" % $almanac.sun.dec)</td>
-                  </tr>
-                  #if $almanac.next_equinox.raw < $almanac.next_solstice.raw
-                  ## The equinox is before the solstice. Display them in order.
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.equinox</td>
-                    <td>$almanac.next_equinox</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.solstice</td>
-                    <td>$almanac.next_solstice</td>
-                  </tr>
-                  #else
-                  ## The solstice is before the equinox. Display them in order.
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.solstice</td>
-                    <td>$almanac.next_solstice</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">$BootstrapLabels.Almanac.equinox</td>
-                <td>$almanac.next_equinox</td>
-                  </tr>
-                  #end if
-                  <tr>
-                    <th scope="row">&nbsp;</td>
-                    <td>&nbsp;</td>
-                  </tr>
+                    <th scope="col"><h3>$gettext("Sun")</h3></th>
+                    <th scope="col"><h3>$gettext("Moon")</h3></th>
+                    #if $almanac.hasExtras
+                        ## Extended almanac information is available. Do the full set of tables.
+                        #set $sun_altitude = $almanac.sun.alt
+                        #if $sun_altitude < 0
+                            #set $sun_None="<i>(Always down)</i>"
+                        #else
+                            #set $sun_None="<i>(Always up)</i>"
+                        #end if
+                        <tr>
+                            <td>
+                                <div class="row col">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">$gettext("Start_civil_twilight")</th>
+                                                <td>$almanac(horizon=-6).sun(use_center=1).rise</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Sunrise")</th>
+                                                <td>$almanac.sun.rise.string($sun_None)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Transit")</th>
+                                                <td>$almanac.sun.transit</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Sunset")</th>
+                                                <td>$almanac.sun.set.string($sun_None)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("End_civil_twilight")</th>
+                                                <td>$almanac(horizon=-6).sun(use_center=1).set</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Azimuth")</th>
+                                                <td>$("%.1f&deg;" % $almanac.sun.az)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Altitude")</th>
+                                                <td>$("%.1f&deg;" % $sun_altitude)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Right_ascension")</th>
+                                                <td>$("%.1f&deg;" % $almanac.sun.ra)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Declination")</th>
+                                                <td>$("%.1f&deg;" % $almanac.sun.dec)</td>
+                                            </tr>
+                                            #if $almanac.next_equinox.raw < $almanac.next_solstice.raw
+                                                ## The equinox is before the solstice. Display them in order.
+                                                <tr>
+                                                    <th scope="row">$gettext("Equinox")</th>
+                                                    <td>$almanac.next_equinox</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">$gettext("Solstice")</th>
+                                                    <td>$almanac.next_solstice</td>
+                                                </tr>
+                                            #else
+                                                ## The solstice is before the equinox. Display them in order.
+                                                <tr>
+                                                    <th scope="row">$gettext("Solstice")</th>
+                                                    <td>$almanac.next_solstice</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">$gettext("Equinox")</th>
+                                                    <td>$almanac.next_equinox</td>
+                                                </tr>
+                                            #end if
+                                            <tr>
+                                                <th scope="row">&nbsp;</th>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row col">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">&nbsp;</th>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Rise")</th>
+                                                <td>$almanac.moon.rise</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Transit")</th>
+                                                <td>$almanac.moon.transit</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Set")</th>
+                                                <td>$almanac.moon.set</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">&nbsp;</th>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Azimuth")</th>
+                                                <td>$("%.1f&deg;" % $almanac.moon.az)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Altitude")</th>
+                                                <td>$("%.1f&deg;" % $almanac.moon.alt)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Right_ascension")</th>
+                                                <td>$("%.1f&deg;" % $almanac.moon.ra)</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">$gettext("Declination")</th>
+                                                <td>$("%.1f&deg;" % $almanac.moon.dec)</td>
+                                            </tr>
+                                            #if $almanac.next_full_moon.raw < $almanac.next_new_moon.raw
+                                                <tr>
+                                                    <th scope="row">$gettext("Full_moon")</th>
+                                                    <td>$almanac.next_full_moon</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">$gettext("New_moon")</th>
+                                                    <td>$almanac.next_new_moon</td>
+                                                </tr>
+                                            #else
+                                                <tr>
+                                                    <th scope="row">$gettext("New_moon")</th>
+                                                    <td>$almanac.next_new_moon</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">$gettext("Full_moon")</th>
+                                                    <td>$almanac.next_full_moon</td>
+                                                </tr>
+                                            #end if
+                                            <tr>
+                                                <th scope="row">$gettext("Phase")</th>
+                                                <td>$almanac.moon_phase ($almanac.moon_fullness% full)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    #else
+                        ## No extended almanac information available. Fall back to a simple table.
+                        <div class="col-md-12">
+                            <div class="row col">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">$gettext("Sunrise")</th>
+                                            <td>$almanac.sunrise</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">$gettext("Sunset")</th>
+                                            <td>$almanac.sunset</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">$gettext("Moon_phase")</th>
+                                            <td>$almanac.moon_phase ($almanac.moon_fullness% full)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </tr>
+                    #end if
                 </tbody>
-                </table>
-                </div>
-                </td>
-                <td>
-                  <div class="row col">
-                  <table class="table table-hover">
-                  <tbody>
-                    <tr>
-                      <th scope="row">&nbsp;</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.rise</td>
-                      <td>$almanac.moon.rise</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.transit</td>
-                      <td>$almanac.moon.transit</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.set</td>
-                      <td>$almanac.moon.set</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">&nbsp;</td>
-                      <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.azimuth</td>
-                      <td>$("%.1f&deg;" % $almanac.moon.az)</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.altitude</td>
-                      <td>$("%.1f&deg;" % $almanac.moon.alt)</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.right_ascension</td>
-                      <td>$("%.1f&deg;" % $almanac.moon.ra)</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.declination</td>
-                      <td>$("%.1f&deg;" % $almanac.moon.dec)</td>
-                    </tr>
-                  #if $almanac.next_full_moon.raw < $almanac.next_new_moon.raw
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.full_moon</td>
-                      <td>$almanac.next_full_moon</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.new_moon</td>
-                      <td>$almanac.next_new_moon</td>
-                    </tr>
-                  #else
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.new_moon</td>
-                      <td>$almanac.next_new_moon</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.full_moon</td>
-                      <td>$almanac.next_full_moon</td>
-                    </tr>
-                  #end if
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.phase</td>
-                      <td>$almanac.moon_phase ($almanac.moon_fullness% full)</td>
-                    </tr>
-                </tbody>
-                  </table>
-                  </div>
-                  </td>
-                #else
-                ## No extended almanac information available. Fall back to a simple table.
-                  <div class="col-md-12">
-                   <div class="row col">
-                  <table class="table table-hover">
-                   <tbody>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.sunrise</td>
-                      <td>$almanac.sunrise</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.sunset</td>
-                      <td>$almanac.sunset</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">$BootstrapLabels.Almanac.moon_phase</td>
-                      <td>$almanac.moon_phase ($almanac.moon_fullness% full)</td>
-                    </tr>
-                   </tbody>
-                  </table>
-                  </div>
-                  </div>
-                  #end if
-                </tr>
-              </tbody>
             </table>
-         </div>
-
         </div>
-      </div>
-
-    <hr>
-    <footer>
-      <p>$BootstrapLabels.footer</p>
-    </footer>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-3.6.0.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/mqtt.min.js"></script>
-<script src="js/units.js"></script>
-<script src="js/site.js"></script>
-<script src="js/echarts.min.js"></script>
-<script src="js/lang.js"></script>
-<script src="js/gauges.js"></script>
-<script src="js/charts.js"></script>
-#include "script.html.tmpl"
+    </div>
+    #include "foot.html.inc"
+</div>
+#include "script.html.inc"
 </body>
 </html>
 
