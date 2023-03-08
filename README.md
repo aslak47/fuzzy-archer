@@ -5,13 +5,15 @@ Gauge graphics showing current conditions.
 Interactive charts showing conditions over a timespan
 
 MQTT enabled Gauges and charts - live weather data! 
-(Live data needs extra extensions and configurations for publishing and subscribing MQTT messages and topics)
+(Live data needs extra extensions and configurations for publishing and subscribing MQTT messages and topics) see: https://github.com/brewster76/fuzzy-archer/wiki/MQTT-setup
 
 Statistics: daily/weewly/monthly/yearly/alltime, highs/lows, ...
 
 Historic data in color coded html tables.
 
 Available in multiple languages.
+
+Read the upgrading guide, if you already have an older version installed: https://github.com/brewster76/fuzzy-archer/wiki/Upgrading-to-v4
 
 New in v4.0:
 
@@ -24,8 +26,10 @@ New in v4.0:
 - Bug fixes and other enhancements
 
 See it in action with live data (~30s. refresh interval): 
+
 [Das Wetter in Rif](https://www.kainzbauer.net/weather/Rif/)
 ![Example_Rif](https://kainzbauer.net/example_rif.png)
+
 See it in action (legacy v2.x): [dajda.net](http://dajda.net/)
 
 Gauge with 3 Needles / Markers examples:
