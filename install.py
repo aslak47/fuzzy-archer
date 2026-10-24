@@ -14,6 +14,7 @@ def loader():
 
 class BootstrapInstaller(setup.ExtensionInstaller):
     _skin_conf_files = ['Bootstrap/skin.conf']
+    _version="4.4"
 
     def __init__(self):
         files=[('skins/Bootstrap',
@@ -69,9 +70,16 @@ class BootstrapInstaller(setup.ExtensionInstaller):
             ['skins/Bootstrap/js/bootstrap.bundle.min.js',
             'skins/Bootstrap/js/charts.js',
             'skins/Bootstrap/js/echarts.min.js',
+            'skins/Bootstrap/js/echarts_i18n/langDE.js',
+            'skins/Bootstrap/js/echarts_i18n/langEN.js',
+            'skins/Bootstrap/js/echarts_i18n/langES.js',
+            'skins/Bootstrap/js/echarts_i18n/langFR.js',
+            'skins/Bootstrap/js/echarts_i18n/langIT.js',
+            'skins/Bootstrap/js/echarts_i18n/langNL.js',
+            'skins/Bootstrap/js/echarts_i18n/langTH.js',
+            'skins/Bootstrap/js/echarts_i18n/langZH.js',
              'skins/Bootstrap/js/jquery.min.js',
             'skins/Bootstrap/js/gauges.js',
-            'skins/Bootstrap/js/lang.js',
             'skins/Bootstrap/js/mqtt.min.js',
             'skins/Bootstrap/js/luxon.min.js',
             'skins/Bootstrap/js/site.js',
@@ -89,9 +97,8 @@ class BootstrapInstaller(setup.ExtensionInstaller):
              'skins/Bootstrap/lang/th.conf',
              'skins/Bootstrap/lang/zh.conf'])]
 
-        version="4.4"
         super(BootstrapInstaller, self).__init__(
-            version=version,
+            version= self._version,
             name='bootstrap',
             description='A skin based around the bootstrap framework',
             author="Nick Dajda, Michael Kainzbauer and other contributors",
@@ -117,7 +124,7 @@ class BootstrapInstaller(setup.ExtensionInstaller):
 
         print("")
         print("Change to a different language following the description at:")
-        print("   http://www.weewx.com/docs/customizing.htm#localization")
+        print("   https://www.weewx.com/docs/5.1/custom/localization/")
 
         print("")
         print("Default location for HTML and image files is public_html/bootstrap")

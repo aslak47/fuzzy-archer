@@ -38,6 +38,23 @@ Available in multiple languages. Help wanted! We need help with translations for
 
 Read the upgrading guides in the wiki, if you already have an older version installed: https://github.com/brewster76/fuzzy-archer/wiki
 
+New in v4.5:
+- Upgraded dependencies
+  - pyephem is deprecated and now skyfield is used for day/night background in Live Charts
+  - configuration for ephemeris file
+  - make sure you install skyfield, if you want day/night background in Live Charts
+  - there is a [weewx-skyfield-almanac](https://github.com/roe-dl/weewx-skyfield-almanac) extension for WeeWX
+    - If you chose to install weewx-skyfield-almanac, it may be a good idea to use the same ephemeris file download location
+- More predefined config examples for [HistoryReport]
+- Additional norwegian translations (thx to @[Aslak Vaa](https://github.com/aslak47))
+- Additional czech translations (thx to @[Jiri Dobry](https://github.com/dobryj))
+- Additional italian translations (thx to @[Claudio Baldari](https://github.com/bald982))
+
+- Fixed issues
+    - https://github.com/brewster76/fuzzy-archer/issues/200 (thx to @[WernerKr](https://github.com/WernerKr))
+
+Change list: https://github.com/brewster76/fuzzy-archer/compare/v4.4...v4.5
+
 New in v4.4:
 
 - Upgraded dependencies
@@ -50,10 +67,13 @@ New in v4.4:
   - https://github.com/brewster76/fuzzy-archer/issues/167 (thx to @[dcapslock](https://github.com/dcapslock))
   - https://github.com/brewster76/fuzzy-archer/issues/169 (thx to @[dcapslock](https://github.com/dcapslock))
   - https://github.com/brewster76/fuzzy-archer/issues/163 (thx to @[dcapslock](https://github.com/dcapslock))
+  - https://github.com/brewster76/fuzzy-archer/issues/187 (thx to @[claudobahn](https://github.com/claudobahn))
+  - https://github.com/brewster76/fuzzy-archer/issues/188 (thx to @[claudobahn](https://github.com/claudobahn))
+  - https://github.com/brewster76/fuzzy-archer/issues/191 (thx to @[claudobahn](https://github.com/claudobahn))
 
 Many thanks to all contributors for your open eyes, discussion inputs, PRs, filing issues! Namely @[Aslak Vaa](https://github.com/aslak47) for this version.
 
-Change list: https://github.com/brewster76/fuzzy-archer/compare/v4.3...4.4
+Change list: https://github.com/brewster76/fuzzy-archer/compare/v4.3...v4.4
 
 New in v4.3:
 

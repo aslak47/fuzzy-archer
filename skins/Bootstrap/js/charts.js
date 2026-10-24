@@ -70,7 +70,7 @@ function loadCharts() {
                 data: weewxData[categoryId],
                 unit: weewxData.units.Labels[category.target_unit],
                 symbol: category.symbol,
-                symbolSize: category.symbolSize,
+                symbolSize: category.symbolSize === undefined ? 4 : category.symbolSize,
                 chartId: chartId,
             }
             if (category.lineWidth !== undefined) {
@@ -81,7 +81,7 @@ function loadCharts() {
             chartSeriesConfigs.push(chartSeriesConfig);
 
             if (weewxData[categoryId] !== undefined && weewxData[categoryId] !== null && weewxData[categoryId].length > 1) {
-                let categoryTimestamp = weewxData[categoryId].slice(-2, -1)[0][0];
+                let categoryTimestamp = weewxData[categoryId].slice(-1)[0][0];
                 if (categoryTimestamp !== undefined && categoryTimestamp > timestamp) {
                     timestamp = categoryTimestamp;
                 }
@@ -245,6 +245,7 @@ function getChartOption(seriesConfigs) {
     return {
         legend: {
             type: "plain",
+            top: 10,
             data: legendData
         },
         color: colors,
@@ -546,7 +547,7 @@ function addUndefinedIfCurrentMissing(data) {
     if (data.length > 0) {
         latestTimestamp = data[data.length - 1][0];
     }
-    if (Date.now() - latestTimestamp > weewxData.config.archive_interval) {
+    if (Date.now() - latestTimestamp > weewxData.config.archive_interval * 1000) {
         data.push([Date.now(), undefined]);
     }
 }

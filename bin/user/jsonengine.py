@@ -3,7 +3,6 @@
 #    Author: Michael Kainzbauer (github: mkainzbauer)
 """generator for configuration and initializing live data skin
 
-Tested on Weewx release 4.10.1.
 Tested with sqlite, may not work with other databases.
 
 Directions for use:
@@ -25,6 +24,7 @@ TODO: example
 import sys
 import logging
 import json
+import configobj
 import os.path
 import zoneinfo
 
@@ -69,9 +69,17 @@ class JSONGenerator(weewx.reportengine.ReportGenerator):
         self.gauge_dict = self.skin_dict['LiveGauges']
         self.chart_dict = self.skin_dict['LiveCharts']
         self.units_dict = self.skin_dict['Units']
-        merge_config(self.units_dict, self.config_dict['StdReport']['Defaults']['Units'])
+        try:
+            merge_config(self.units_dict, self.config_dict['StdReport']['Defaults']['Units'])
+        except KeyError as keyError:
+            log.debug("JSONGenerator: Could not merge ['StdReport']['Defaults']['Units'] because '%s' is missing" % keyError.args[0])
+        
         self.labels_dict = self.skin_dict['Labels']
-        merge_config(self.labels_dict, self.config_dict['StdReport']['Defaults']['Labels'])
+        try:
+            merge_config(self.labels_dict, self.config_dict['StdReport']['Defaults']['Labels'])
+        except KeyError as keyError:
+            log.debug("JSONGenerator: Could not merge ['StdReport']['Defaults']['Labels'] because '%s' is missing" % keyError.args[0])
+        
         self.frontend_data = {}
 
         # Create a converter to get this into the desired units
@@ -259,10 +267,21 @@ class JSONGenerator(weewx.reportengine.ReportGenerator):
 
 
     def get_day_night_events(self, start, end, lon, lat, altitude_m):
-        if 'ephem' not in sys.modules or not self.show_daynight:
+        if 'skyfield' not in sys.modules or not self.show_daynight:
             return []
 
-        events = SunEvents(start, end, lon, lat, int(altitude_m)).get_transits(self.transition_angle)
+        sqlite_root = self.config_dict.get('DatabaseTypes',configobj.ConfigObj()).get('SQLite',configobj.ConfigObj()).get('SQLITE_ROOT','.')
+        path = os.path.join(
+            self.config_dict.get('WEEWX_ROOT','.'),
+            sqlite_root,
+            'skyfield'
+        )
+        if not os.path.isdir(path): os.mkdir(path)
+
+        events = SunEvents(start, end, lon, lat, int(altitude_m), path, self.skin_dict['Skyfield']['ephemeris']).get_transits(self.transition_angle)
+        if events is None:
+            return []
+        
         for event in events:
             event[0] = event[0] * 1000
             angle = event[1]
@@ -334,10 +353,9 @@ class JSONGenerator(weewx.reportengine.ReportGenerator):
         if station_timezone is None:
             # fallback to UTC offset
             offsetTotalSeconds = datetime.now().astimezone().utcoffset().total_seconds()
-            offsetSign = '-' if offsetTotalSeconds < 0 else '+'
             offsetMinutes = int(offsetTotalSeconds % 3600)
             offsetHours = int(offsetTotalSeconds // 3600)
             # Luxon on Front End accepts timezone in format '+HH:mm' or '-HH:mm' as alternative to IANA timezone
-            station_timezone = f'{offsetSign}{offsetHours:02d}:{offsetMinutes:02d}'
+            station_timezone = f'{offsetHours:+03d}:{offsetMinutes:02d}'
         
         return station_timezone
